@@ -9,6 +9,8 @@ info:
     Modules:
       - getConfigData
       - saveConfigData
+      - getCustomerData
+      - saveCustomerData
 
     For further detailed information read the external documentation todo ADD EXTERNAL LINK
 
@@ -31,7 +33,7 @@ paths:
       responses:
         200:
           description: >-
-            The request was successful, the generated PDF content was saved in Document Basket and it is returned.
+            The request was successful, the config data was retrieved.
           content:
             application/json;charset=utf-8:
               schema:
@@ -53,6 +55,38 @@ paths:
       responses:
         204:
           description: "The content for config data was saved, please retrieve it."
+  "/customer":
+    get:
+      tags:
+        - Customer
+      summary: >-
+        Retrieves the customer data for the given email.
+      operationId: getCustomerData
+      parameters:
+        - $ref: "#/components/parameters/CustomerEmail"
+        - $ref: "#/components/parameters/CustomerPassword"
+      responses:
+        200:
+          description: >-
+            The request was successful, the customer data is retrieved.
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/CustomerData"
+    put:
+      tags:
+        - Customer
+      summary: "Saves the customer data for the given client."
+      operationId: saveCustomerData
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/CustomerData"
+        required: true
+      responses:
+        200:
+          description: "The content for config data was saved, please retrieve it."
 
 components:
   schemas:
@@ -69,6 +103,35 @@ components:
           description: >-
             The language in which the client wants to see the application (MK or EN)
           example: 'EN'
+    CustomerData:
+      type: object
+      properties:
+        surname:
+          type: string
+          description: "The surname of the client"
+          example: "Smith"
+        name:
+          type: string
+          description: "The name of the client"
+          example: "John"
+        email:
+          type: string
+          format: email
+          description: "The email of the client"
+          example: "john@somewhere.com"
+        dateOfBirth:
+          type: string
+          format: date
+          description: "The date of birth of the client"
+          example: "01.01.1966"
+        id:
+          type: integer
+          description: "The id of the client"
+          example: 1
+        password:
+          type: string
+          description: "The password of the client"
+          example: "pass123"
 
   parameters:
     CustomerId:
@@ -80,4 +143,21 @@ components:
       schema:
         type: integer
         x-data-class-category: d-non-sensitive-identifier
+    CustomerEmail:
+      name: customerEmail
+      description: 'The customer email.'
+      in: query
+      required: true
+      example: marija@gmail.com
+      schema:
+        type: string
+    CustomerPassword:
+      name: customerPassword
+      description: "The customer password"
+      in: query
+      required: true
+      example: pase434
+      schema:
+        type: string
+
 

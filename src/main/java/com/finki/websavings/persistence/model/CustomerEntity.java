@@ -26,11 +26,14 @@ public class CustomerEntity implements Serializable {
 	@Column(name="name", nullable=false, length=255)
 	private String name;
 	
-	@Column(name="email", nullable=false, length=255)
+	@Column(name="email", nullable=false, length=255, unique = true)
 	private String email;
 	
 	@Column(name="dateOfBirth", nullable=false, length=255)
 	private String dateOfBirth;
+
+	@Column(name = "password", nullable = false, length = 255)
+	private String password;
 	
 //	@OneToMany(mappedBy= "customer", targetEntity= SavingAccountEntity.class)
 //	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)
@@ -76,6 +79,14 @@ public class CustomerEntity implements Serializable {
 	
 	public String getDateOfBirth() {
 		return dateOfBirth;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 //	public void setSavingAccount(java.util.Set value) {
