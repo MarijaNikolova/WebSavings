@@ -11,6 +11,8 @@ info:
       - saveConfigData
       - getCustomerData
       - saveCustomerData
+      - getCashFlows
+      - saveCashFlow
 
     For further detailed information read the external documentation todo ADD EXTERNAL LINK
 
@@ -139,6 +141,11 @@ components:
           description: >-
             The language in which the client wants to see the application (MK or EN)
           example: 'EN'
+        id:
+          type: integer
+          description: "The id of the config data"
+          example: 1
+
     CustomerData:
       type: object
       properties:

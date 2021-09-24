@@ -1,5 +1,7 @@
 package com.finki.websavings.service;
 
+import com.finki.websavings.domain.mapper.ConfigDataDomainMapper;
+import com.finki.websavings.domain.model.configdata.ConfigDataDomainModel;
 import com.finki.websavings.persistence.mapper.ConfigDataPersistenceMapper;
 import com.finki.websavings.model.ConfigData;
 import com.finki.websavings.persistence.model.config.ConfigDataEntity;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Component;
 public class ConfigDataService {
 
   private final ConfigDataRepository configDataRepository;
+  private final ConfigDataDomainMapper configDataDomainMapper;
   private final ConfigDataPersistenceMapper configDataPersistenceMapper;
 
   /**
@@ -27,7 +30,9 @@ public class ConfigDataService {
 
     ConfigDataEntity configData = configDataRepository.findByCustomerId(customerId);
 
-    return configDataPersistenceMapper.mapToModel(configData);
+    ConfigDataDomainModel configDataDomainModel = configDataPersistenceMapper.mapToModel(configData);
+
+    return configDataDomainMapper.toDto(configDataDomainModel);
   }
 
   /**
@@ -38,7 +43,9 @@ public class ConfigDataService {
    */
   public Integer saveConfigDataForCustomer(Integer customerId, ConfigData configData) {
 
-    ConfigDataEntity configDataEntity = configDataPersistenceMapper.mapToEntity(configData, customerId);
+    ConfigDataDomainModel configDataDomainModel = configDataDomainMapper.toDomainModel(configData);
+
+    ConfigDataEntity configDataEntity = configDataPersistenceMapper.mapToEntity(configDataDomainModel, customerId);
 
     ConfigDataEntity savedObject = configDataRepository.save(configDataEntity);
 

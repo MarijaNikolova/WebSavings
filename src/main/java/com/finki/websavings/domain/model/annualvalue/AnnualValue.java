@@ -1,4 +1,4 @@
-package com.finki.websavings.model.annualvalue;
+package com.finki.websavings.domain.model.annualvalue;
 
 import lombok.Builder;
 import lombok.Getter;

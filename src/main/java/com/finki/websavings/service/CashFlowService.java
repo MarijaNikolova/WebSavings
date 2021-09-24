@@ -1,8 +1,8 @@
 package com.finki.websavings.service;
 
-import com.finki.websavings.mapper.CashFlowDomainMapper;
+import com.finki.websavings.domain.mapper.CashFlowDomainMapper;
 import com.finki.websavings.model.CashFlow;
-import com.finki.websavings.model.cashflow.CashFlowDomainModel;
+import com.finki.websavings.domain.model.cashflow.CashFlowDomainModel;
 import com.finki.websavings.persistence.mapper.CashFlowPersistenceMapper;
 import com.finki.websavings.persistence.model.cashflow.CashFlowEntity;
 import com.finki.websavings.persistence.model.cashflow.ExpenseEntity;

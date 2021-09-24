@@ -1,6 +1,6 @@
-package com.finki.websavings.model.cashflow;
+package com.finki.websavings.domain.model.cashflow;
 
-import com.finki.websavings.model.annualvalue.AnnualValue;
+import com.finki.websavings.domain.model.annualvalue.AnnualValue;
 
 import java.util.Map;
 

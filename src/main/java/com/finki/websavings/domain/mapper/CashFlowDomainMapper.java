@@ -1,9 +1,9 @@
-package com.finki.websavings.mapper;
+package com.finki.websavings.domain.mapper;
 
+import com.finki.websavings.domain.model.cashflow.CashFlowDomainModel;
+import com.finki.websavings.domain.model.cashflow.ExpenseCashFlowDomainModel;
+import com.finki.websavings.domain.model.cashflow.IncomeCashFlowDomainModel;
 import com.finki.websavings.model.CashFlow;
-import com.finki.websavings.model.cashflow.CashFlowDomainModel;
-import com.finki.websavings.model.cashflow.ExpenseCashFlowDomainModel;
-import com.finki.websavings.model.cashflow.IncomeCashFlowDomainModel;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
