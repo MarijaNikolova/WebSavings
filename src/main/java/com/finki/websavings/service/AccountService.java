@@ -2,7 +2,6 @@ package com.finki.websavings.service;
 
 import com.finki.websavings.domain.mapper.AccountDomainMapper;
 import com.finki.websavings.domain.model.account.SavingAccountDomainModel;
-import com.finki.websavings.domain.model.account.SavingInstitutionDomainModel;
 import com.finki.websavings.model.Account;
 import com.finki.websavings.persistence.mapper.AccountPersistenceMapper;
 import com.finki.websavings.persistence.mapper.SavingInstitutionPersistenceMapper;
