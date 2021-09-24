@@ -15,6 +15,8 @@ info:
       - saveCashFlow
       - getGoals
       - saveGoal
+      - getAccounts
+      - saveAccount
 
     For further detailed information read the external documentation todo ADD EXTERNAL LINK
 
@@ -163,6 +165,42 @@ paths:
       responses:
         200:
           description: "The content for goal  was saved, please retrieve it."
+  "/accounts":
+      get:
+        tags:
+          - Accounts
+        summary: >-
+          Retrieves all accounts for the given customer
+        operationId: getAccounts
+        parameters:
+          - $ref: "#/components/parameters/CustomerId"
+        responses:
+          200:
+            description: >-
+              The request was successful, the accounts are retrieved.
+            content:
+              application/json;charset=utf-8:
+                schema:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/Account"
+      put:
+        tags:
+          - Accounts
+        summary: >-
+          Saves the account for the given customer
+        operationId: saveAccount
+        parameters:
+          - $ref: "#/components/parameters/CustomerId"
+        requestBody:
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Account"
+          required: true
+        responses:
+          200:
+            description: "The content for account  was saved, please retrieve it."
 
 components:
   schemas:
@@ -289,6 +327,59 @@ components:
             - OTHER_GOAL
           description: "The type of the goal."
           example: "CAR_GOAL"
+        id:
+          type: integer
+          description: "The id of the account"
+          example: 1
+    Bank:
+      type: object
+      properties:
+        name:
+          type: string
+          description: "The name of the bank"
+          example: "NLB bank"
+        type:
+          type: string
+          description:  "The type of the bank"
+          example: "second pillar"
+    Account:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: "The id of the account"
+          example: 1
+        description:
+          type: string
+          description: "The description of the goal"
+          example: "Car goal"
+        initialValue:
+          type: number
+          description: "The value of the account"
+          example: 30.0
+        currency:
+          type: string
+          description: "The currency of the goal"
+          example: 'CHF'
+        growthRate:
+          type: number
+          description: "The growth rate of the account in percentage"
+          example: 30.0
+        riskFactor:
+          type: number
+          description: "The risk factor"
+          example: 0.1
+        type:
+          type: string
+          enum:
+            - INVESTMENT_ACCOUNT
+            - DEPOSIT
+            - REGULAR_ACCOUNT
+            - SECOND_PILLAR
+          description: "The type of the account."
+          example: "DEPOSIT"
+        bank:
+          $ref: "#/components/schemas/Bank"
 
   parameters:
     CustomerId:
