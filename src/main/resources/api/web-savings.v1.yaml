@@ -63,10 +63,12 @@ components:
           type: integer
           description: >-
             Number of years for which the duration of the plan should be calculated.
+          example: 12
         language:
           type: string
           description: >-
             The language in which the client wants to see the application (MK or EN)
+          example: 'EN'
 
   parameters:
     CustomerId:
@@ -74,8 +76,8 @@ components:
       description: '`The customer id.'
       in: query
       required: true
-      example: 'customer1'
+      example: 1
       schema:
-        type: string
+        type: integer
         x-data-class-category: d-non-sensitive-identifier
 
