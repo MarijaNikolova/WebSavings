@@ -1,0 +1,81 @@
+openapi: 3.0.2
+info:
+  title: "API for the Web Savings calculator"
+  version: 1.0.0
+
+  description: |
+    API for the Web Savings Calculator which contains the logic required for the calculator to work.
+
+    Modules:
+      - getConfigData
+      - saveConfigData
+
+    For further detailed information read the external documentation todo ADD EXTERNAL LINK
+
+  contact:
+    name: developers
+    email: marijanikolova93@hotmail.com
+
+servers:
+  - url: "/"
+paths:
+  "/config-data":
+    get:
+      tags:
+        - Config data
+      summary: >-
+        Retrieves saved config data for the given client.
+      operationId: getConfigData
+      parameters:
+        - $ref: "#/components/parameters/CustomerId"
+      responses:
+        200:
+          description: >-
+            The request was successful, the generated PDF content was saved in Document Basket and it is returned.
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/ConfigData"
+    put:
+      tags:
+        - Config data
+      summary: >-
+        Saves the given config data for the client.
+      operationId: saveConfigData
+      parameters:
+        - $ref: "#/components/parameters/CustomerId"
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/ConfigData"
+        required: true
+      responses:
+        204:
+          description: "The content for config data was saved, please retrieve it."
+
+components:
+  schemas:
+    ConfigData:
+      type: object
+      properties:
+        numberOfYears:
+          type: integer
+          description: >-
+            Number of years for which the duration of the plan should be calculated.
+        language:
+          type: string
+          description: >-
+            The language in which the client wants to see the application (MK or EN)
+
+  parameters:
+    CustomerId:
+      name: customerId
+      description: '`The customer id.'
+      in: query
+      required: true
+      example: 'customer1'
+      schema:
+        type: string
+        x-data-class-category: d-non-sensitive-identifier
+
