@@ -1,8 +1,8 @@
-package com.finki.websavings.mapper;
+package com.finki.websavings.persistence.mapper;
 
 import com.finki.websavings.model.ConfigData;
-import com.finki.websavings.persistence.model.ConfigDataEntity;
-import com.finki.websavings.persistence.model.CustomerEntity;
+import com.finki.websavings.persistence.model.config.ConfigDataEntity;
+import com.finki.websavings.persistence.model.customer.CustomerEntity;
 import org.springframework.stereotype.Component;
 
 /**

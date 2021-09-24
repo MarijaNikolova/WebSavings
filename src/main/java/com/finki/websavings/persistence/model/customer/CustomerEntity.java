@@ -1,4 +1,4 @@
-package com.finki.websavings.persistence.model;
+package com.finki.websavings.persistence.model.customer;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,7 +42,7 @@ public class CustomerEntity implements Serializable {
 //	@OneToMany(mappedBy="customer", orphanRemoval=true, targetEntity= CashFlowEntity.class)
 //	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.ALL})
 //	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)
-//	private java.util.Set cashflow = new java.util.HashSet();
+//	private Set cashflow = new java.util.HashSet();
 //
 //	@OneToMany(mappedBy="customer", orphanRemoval=true, targetEntity= GoalEntity.class)
 //	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.ALL})

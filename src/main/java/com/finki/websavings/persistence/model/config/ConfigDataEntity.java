@@ -1,4 +1,6 @@
-package com.finki.websavings.persistence.model;
+package com.finki.websavings.persistence.model.config;
+
+import com.finki.websavings.persistence.model.customer.CustomerEntity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

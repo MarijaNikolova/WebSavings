@@ -87,6 +87,42 @@ paths:
       responses:
         200:
           description: "The content for config data was saved, please retrieve it."
+  "/cashflows":
+    get:
+      tags:
+        - CashFlows
+      summary: >-
+        Retrieves all cash flows for the given customer
+      operationId: getCashFlows
+      parameters:
+        - $ref: "#/components/parameters/CustomerId"
+      responses:
+        200:
+          description: >-
+            Retrieves all cash flows for the given client
+          content:
+            application/json;charset=utf-8:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CashFlow"
+    put:
+      tags:
+         - CashFlows
+      summary: >-
+        Saves the cash flow for the given customer
+      operationId: saveCashFlow
+      parameters:
+        - $ref: "#/components/parameters/CustomerId"
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/CashFlow"
+        required: true
+      responses:
+        200:
+          description: "The content for config data was saved, please retrieve it."
 
 components:
   schemas:
@@ -132,6 +168,53 @@ components:
           type: string
           description: "The password of the client"
           example: "pass123"
+    CashFlow:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: "The id of the cash flow"
+          example: 1
+        value:
+          type: number
+          description: "The value of the cash flow"
+          example: 30.0
+        currency:
+          type: string
+          description: "The currency of the cash flow"
+          example: 'CHF'
+        occurenceType:
+          type: string
+          enum:
+            - RECURRING
+            - ONE-TIME
+          description: "The occurrence of the cash flow"
+          example: "RECURRING"
+        description:
+          type: string
+          description: "The description of the cash flow"
+          example: "Income from house rent"
+        category:
+          type: string
+          description: "The category of the cash flow"
+          example: "Mortgages"
+        type:
+          type: string
+          enum:
+            - INCOME
+            - EXPENSE
+          description: "The type of the cash flow - income or expense"
+          example: "income"
+        dateFrom:
+          type: string
+          format: date
+          description: "The to date for the cash flow"
+          example: "2021-01-01"
+        dateTo:
+          type: string
+          format: date
+          description: "The to date for the cash flow"
+          example: "2021-01-01"
 
   parameters:
     CustomerId:

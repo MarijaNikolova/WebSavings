@@ -1,6 +1,6 @@
 package com.finki.websavings.persistence.repository;
 
-import com.finki.websavings.persistence.model.CustomerEntity;
+import com.finki.websavings.persistence.model.customer.CustomerEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

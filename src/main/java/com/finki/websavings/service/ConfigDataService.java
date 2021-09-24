@@ -1,8 +1,8 @@
 package com.finki.websavings.service;
 
-import com.finki.websavings.mapper.ConfigDataPersistenceMapper;
+import com.finki.websavings.persistence.mapper.ConfigDataPersistenceMapper;
 import com.finki.websavings.model.ConfigData;
-import com.finki.websavings.persistence.model.ConfigDataEntity;
+import com.finki.websavings.persistence.model.config.ConfigDataEntity;
 import com.finki.websavings.persistence.repository.ConfigDataRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
