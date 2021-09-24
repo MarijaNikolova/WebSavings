@@ -13,8 +13,6 @@ import java.io.Serializable;
 @DiscriminatorValue("income")
 public class IncomeEntity extends CashFlowEntity implements Serializable {
 
-    public IncomeEntity() {
-
-    }
+    public IncomeEntity() {}
 
 }

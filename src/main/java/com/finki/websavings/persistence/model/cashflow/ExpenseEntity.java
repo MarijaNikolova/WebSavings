@@ -12,6 +12,5 @@ import java.io.Serializable;
 @DiscriminatorValue("expense")
 public class ExpenseEntity extends CashFlowEntity implements Serializable {
 
-    public ExpenseEntity() {
-    }
+    public ExpenseEntity() {}
 }
