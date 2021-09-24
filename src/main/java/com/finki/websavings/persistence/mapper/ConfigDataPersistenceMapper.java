@@ -23,7 +23,7 @@ public class ConfigDataPersistenceMapper {
     ConfigDataEntity configDataEntity = new ConfigDataEntity();
     configDataEntity.setLanguage(configData.getLanguage());
     configDataEntity.setNumberOfYears(configData.getNumberOfYears());
-    configDataEntity.setID(configData.getId());
+    configDataEntity.setId(configData.getId());
 
     CustomerEntity customer = new CustomerEntity();
     customer.setId(customerId);

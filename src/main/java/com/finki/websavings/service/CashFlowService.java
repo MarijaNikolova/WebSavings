@@ -7,8 +7,8 @@ import com.finki.websavings.persistence.mapper.CashFlowPersistenceMapper;
 import com.finki.websavings.persistence.model.cashflow.CashFlowEntity;
 import com.finki.websavings.persistence.model.cashflow.ExpenseEntity;
 import com.finki.websavings.persistence.model.cashflow.IncomeEntity;
-import com.finki.websavings.persistence.repository.ExpenseCashFlowRepository;
-import com.finki.websavings.persistence.repository.IncomeCashFlowRepository;
+import com.finki.websavings.persistence.repository.cashflow.ExpenseCashFlowRepository;
+import com.finki.websavings.persistence.repository.cashflow.IncomeCashFlowRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

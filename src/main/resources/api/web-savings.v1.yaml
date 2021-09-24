@@ -13,6 +13,8 @@ info:
       - saveCustomerData
       - getCashFlows
       - saveCashFlow
+      - getGoals
+      - saveGoal
 
     For further detailed information read the external documentation todo ADD EXTERNAL LINK
 
@@ -88,7 +90,7 @@ paths:
         required: true
       responses:
         200:
-          description: "The content for config data was saved, please retrieve it."
+          description: "The content for customer was saved, please retrieve it."
   "/cashflows":
     get:
       tags:
@@ -124,7 +126,43 @@ paths:
         required: true
       responses:
         200:
-          description: "The content for config data was saved, please retrieve it."
+          description: "The content for the cash flows was saved, please retrieve it."
+  "/goals":
+    get:
+      tags:
+        - Goals
+      summary: >-
+        Retrieves all goals for the given customer
+      operationId: getGoals
+      parameters:
+        - $ref: "#/components/parameters/CustomerId"
+      responses:
+        200:
+          description: >-
+            The request was successful, the goals retrieved.
+          content:
+            application/json;charset=utf-8:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Goal"
+    put:
+      tags:
+        - Goals
+      summary: >-
+        Saves the goal for the given customer
+      operationId: saveGoal
+      parameters:
+        - $ref: "#/components/parameters/CustomerId"
+      requestBody:
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/Goal"
+        required: true
+      responses:
+        200:
+          description: "The content for goal  was saved, please retrieve it."
 
 components:
   schemas:
@@ -222,6 +260,35 @@ components:
           format: date
           description: "The to date for the cash flow"
           example: "2021-01-01"
+    Goal:
+      type: object
+      properties:
+        description:
+          type: string
+          description: "The description of the goal"
+          example: "Car goal"
+        plannedFor:
+          type: string
+          format: date
+          description: "The planned date for the goal"
+          example: "2021-01-01"
+        value:
+          type: number
+          description: "The value of the goal"
+          example: 30.0
+        currency:
+          type: string
+          description: "The currency of the goal"
+          example: 'CHF'
+        type:
+          type: string
+          enum:
+            - REAL_ESTATE_GOAL
+            - CAR_GOAL
+            - TRAVEL_GOAL
+            - OTHER_GOAL
+          description: "The type of the goal."
+          example: "CAR_GOAL"
 
   parameters:
     CustomerId:

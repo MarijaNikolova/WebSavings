@@ -5,7 +5,7 @@ import com.finki.websavings.domain.model.configdata.ConfigDataDomainModel;
 import com.finki.websavings.persistence.mapper.ConfigDataPersistenceMapper;
 import com.finki.websavings.model.ConfigData;
 import com.finki.websavings.persistence.model.config.ConfigDataEntity;
-import com.finki.websavings.persistence.repository.ConfigDataRepository;
+import com.finki.websavings.persistence.repository.config.ConfigDataRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

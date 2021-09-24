@@ -1,4 +1,4 @@
-package com.finki.websavings.persistence.repository;
+package com.finki.websavings.persistence.repository.cashflow;
 
 import com.finki.websavings.persistence.model.cashflow.ExpenseEntity;
 

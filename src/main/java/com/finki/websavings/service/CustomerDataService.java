@@ -5,7 +5,7 @@ import com.finki.websavings.domain.model.customer.CustomerDomainModel;
 import com.finki.websavings.persistence.mapper.CustomerDataPersistenceMapper;
 import com.finki.websavings.model.CustomerData;
 import com.finki.websavings.persistence.model.customer.CustomerEntity;
-import com.finki.websavings.persistence.repository.CustomerDataRepository;
+import com.finki.websavings.persistence.repository.customer.CustomerDataRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package com.finki.websavings.persistence.repository;
+package com.finki.websavings.persistence.repository.config;
 
 import com.finki.websavings.persistence.model.config.ConfigDataEntity;
 
