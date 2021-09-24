@@ -1,5 +1,6 @@
 package com.finki.websavings.persistence.mapper;
 
+import com.finki.websavings.domain.model.customer.CustomerDomainModel;
 import com.finki.websavings.model.CustomerData;
 import com.finki.websavings.persistence.model.customer.CustomerEntity;
 import com.finki.websavings.util.DateUtility;
@@ -17,15 +18,16 @@ public class CustomerDataPersistenceMapper {
    * @param customerData the customer data.
    * @return the entity.
    */
-  public CustomerEntity mapToEntity(CustomerData customerData) {
+  public CustomerEntity mapToEntity(CustomerDomainModel customerData) {
 
     CustomerEntity customerEntity = new CustomerEntity();
 
     customerEntity.setPassword(customerData.getPassword());
     customerEntity.setEmail(customerData.getEmail());
-    customerEntity.setDateOfBirth(DateUtility.convertDateToIsoStringFormat(customerData.getDateOfBirth()));
+    customerEntity.setDateOfBirth(customerData.getDateOfBirth());
     customerEntity.setName(customerData.getName());
     customerEntity.setSurname(customerData.getSurname());
+    customerEntity.setId(customerData.getId());
 
     return customerEntity;
   }
@@ -36,11 +38,11 @@ public class CustomerDataPersistenceMapper {
    * @param entity the entity.
    * @return the model.
    */
-  public CustomerData mapToModel(CustomerEntity entity) {
+  public CustomerDomainModel mapToModel(CustomerEntity entity) {
 
-    CustomerData customerData = new CustomerData();
+    CustomerDomainModel customerData = new CustomerDomainModel();
     customerData.setEmail(entity.getEmail());
-    customerData.setDateOfBirth(DateUtility.fromIsoDateString(entity.getDateOfBirth()));
+    customerData.setDateOfBirth(entity.getDateOfBirth());
     customerData.setName(entity.getName());
     customerData.setSurname(entity.getSurname());
     customerData.setId(entity.getId());

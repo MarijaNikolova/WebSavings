@@ -1,5 +1,7 @@
 package com.finki.websavings.service;
 
+import com.finki.websavings.domain.mapper.CustomerDomainMapper;
+import com.finki.websavings.domain.model.customer.CustomerDomainModel;
 import com.finki.websavings.persistence.mapper.CustomerDataPersistenceMapper;
 import com.finki.websavings.model.CustomerData;
 import com.finki.websavings.persistence.model.customer.CustomerEntity;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Component;
 public class CustomerDataService {
 
   private final CustomerDataRepository customerDataRepository;
+  private final CustomerDomainMapper customerDomainMapper;
   private final CustomerDataPersistenceMapper customerDataPersistenceMapper;
 
   /**
@@ -26,7 +29,10 @@ public class CustomerDataService {
   public CustomerData getCustomerData(String email, String password) {
 
     CustomerEntity customerEntity = customerDataRepository.findByEmailAndPassword(email, password);
-    return customerDataPersistenceMapper.mapToModel(customerEntity);
+
+    CustomerDomainModel customerDomainModel = customerDataPersistenceMapper.mapToModel(customerEntity);
+
+    return customerDomainMapper.toDto(customerDomainModel);
   }
 
   /**
@@ -36,7 +42,10 @@ public class CustomerDataService {
    */
   public void saveCustomerData(CustomerData customerData) {
 
-    CustomerEntity customerEntity = customerDataPersistenceMapper.mapToEntity(customerData);
+    CustomerDomainModel customerDomainModel = customerDomainMapper.toDomainModel(customerData);
+
+    CustomerEntity customerEntity = customerDataPersistenceMapper.mapToEntity(customerDomainModel);
+
     customerDataRepository.save(customerEntity);
   }
 }
