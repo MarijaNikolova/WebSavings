@@ -1,0 +1,14 @@
+# IDEA config files
+.idea/
+
+# Package Files #
+*.war
+*.ear
+
+.project
+.classpath
+.factorypath
+*.log
+
+# IntelliJ
+out/
