@@ -18,6 +18,7 @@ public abstract class SavingAccountDomainModel {
 	private String description;
 	private SavingInstitutionDomainModel savingInstitutionDomainModel;
 	private double growthRate;
+	private Integer id;
 
 	/**
    * Returns the annual values for the given number of years.

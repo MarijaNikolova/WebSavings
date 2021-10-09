@@ -24,7 +24,7 @@ public class AccountController implements AccountsApi {
 
     accountService.saveAccount(body, customerId);
 
-    return AccountsApi.super.saveAccount(customerId, body);
+    return null;
   }
 
   @Override

@@ -17,11 +17,10 @@ info:
       - saveGoal
       - getAccounts
       - saveAccount
-
-    For further detailed information read the external documentation todo ADD EXTERNAL LINK
+      - getAnnualValues
 
   contact:
-    name: developers
+    name: Lead developer
     email: marijanikolova93@hotmail.com
 
 servers:
@@ -201,6 +200,25 @@ paths:
         responses:
           200:
             description: "The content for account  was saved, please retrieve it."
+  "/projections":
+    get:
+      tags:
+        - Annual values
+      summary: >-
+        Retrieves all annual values for the given customer
+      operationId: getAnnualValues
+      parameters:
+        - $ref: "#/components/parameters/CustomerId"
+      responses:
+        200:
+          description: >-
+            The request was successful, the annualValues are retrieved.
+          content:
+            application/json;charset=utf-8:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Projection"
 
 components:
   schemas:
@@ -359,7 +377,7 @@ components:
           example: 30.0
         currency:
           type: string
-          description: "The currency of the goal"
+          description: "The currency of the account"
           example: 'CHF'
         growthRate:
           type: number
@@ -380,6 +398,49 @@ components:
           example: "DEPOSIT"
         bank:
           $ref: "#/components/schemas/Bank"
+    AnnualValueDto:
+      type: object
+      properties:
+        value:
+          type: number
+          description: "The value of the asset for that year"
+          example: 3000.0
+        currency:
+          type: string
+          description: "The currency"
+          example: 'CHF'
+        income:
+          type: number
+          description: "The value of the asset's income for that year"
+          example: 3000.0
+        expense:
+          type: number
+          description: "The value of the asset's expense for that year"
+          example: 3000.0
+    Projection:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: "The id of the asset"
+          example: 1
+        category:
+          type: string
+          enum:
+            - CASHFLOW
+            - ACCOUNT
+            - GOAL
+          description: "Type of the cash flow"
+          example: CASHFLOW
+        values:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              year:
+                type: integer
+              value:
+                $ref: "#/components/schemas/AnnualValueDto"
 
   parameters:
     CustomerId:
