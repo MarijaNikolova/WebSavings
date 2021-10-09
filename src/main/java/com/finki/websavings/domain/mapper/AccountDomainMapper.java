@@ -77,8 +77,9 @@ public class AccountDomainMapper {
     account.setInitialValue(BigDecimal.valueOf(domainModel.getInitialValue()));
     account.setGrowthRate(BigDecimal.valueOf(domainModel.getGrowthRate()));
     account.setDescription(domainModel.getDescription());
+    account.setId(domainModel.getId());
 
-    Bank bank = account.getBank();
+    Bank bank = new Bank();
     SavingInstitutionDomainModel savingInstitutionDomainModel = domainModel.getSavingInstitutionDomainModel();
     bank.setName(savingInstitutionDomainModel.getName());
     bank.setType(savingInstitutionDomainModel.getType());

@@ -32,6 +32,8 @@ public class AccountPersistenceMapper {
 
     SavingAccountDomainModel savingAccountDomainModel = getInstance(savingAccountEntity);
 
+    savingAccountDomainModel.setId(savingAccountEntity.getId());
+
     savingAccountDomainModel.setCurrency(savingAccountEntity.getCurrency());
     savingAccountDomainModel.setInitialValue(savingAccountEntity.getInitialValue());
     savingAccountDomainModel.setGrowthRate(savingAccountEntity.getGrowthRate());
@@ -41,6 +43,7 @@ public class AccountPersistenceMapper {
     SavingInstitutionEntity bank = savingAccountEntity.getBank();
     savingInstitutionDomainModel.setName(bank.getName());
     savingInstitutionDomainModel.setType(bank.getType());
+    savingAccountDomainModel.setId(bank.getId());
     savingAccountDomainModel.setSavingInstitutionDomainModel(savingInstitutionDomainModel);
 
     if(savingAccountEntity instanceof InvestmentAccountEntity) {

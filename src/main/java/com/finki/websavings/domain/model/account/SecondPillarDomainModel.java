@@ -2,6 +2,7 @@ package com.finki.websavings.domain.model.account;
 
 import com.finki.websavings.domain.model.annualvalue.AnnualValue;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -11,6 +12,6 @@ public class SecondPillarDomainModel extends SavingAccountDomainModel {
 
 	@Override
 	public Map<Integer, AnnualValue> getAnnualValues(int numberOfYears) {
-		return null;
+		return new HashMap<>();
 	}
 }

@@ -4,6 +4,7 @@ import com.finki.websavings.domain.model.annualvalue.AnnualValue;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -17,6 +18,6 @@ public class InvestmentAccountDomainModel extends SavingAccountDomainModel {
 
 	@Override
 	public Map<Integer, AnnualValue> getAnnualValues(int numberOfYears) {
-		return null;
+		return new HashMap<>();
 	}
 }

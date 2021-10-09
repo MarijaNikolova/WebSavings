@@ -110,6 +110,7 @@ public class ProjectionService {
     annualValueDto.setIncome(BigDecimal.valueOf(value.getIncome()));
 
     projectionValues.setYear(year);
+    projectionValues.setValue(annualValueDto);
 
     return projectionValues;
   }

@@ -381,8 +381,8 @@ components:
           example: 'CHF'
         growthRate:
           type: number
-          description: "The growth rate of the account in percentage"
-          example: 30.0
+          description: "The growth rate of the account in range from 0 to 1"
+          example: 0.03
         riskFactor:
           type: number
           description: "The risk factor"
@@ -457,7 +457,7 @@ components:
       description: 'The customer email.'
       in: query
       required: true
-      example: marija@gmail.com
+      example: john@somewhere.com
       schema:
         type: string
     CustomerPassword:
@@ -465,7 +465,7 @@ components:
       description: "The customer password"
       in: query
       required: true
-      example: pase434
+      example: pass123
       schema:
         type: string
 
