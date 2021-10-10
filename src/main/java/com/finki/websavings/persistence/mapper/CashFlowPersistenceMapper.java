@@ -45,7 +45,9 @@ public class CashFlowPersistenceMapper {
     cashFlowDomainModel.setId(cashFlowEntity.getId());
     cashFlowDomainModel.setCurrency(cashFlowEntity.getCurrency());
     cashFlowDomainModel.setDateFrom(DateUtility.fromIsoDateString(cashFlowEntity.getDateFrom()));
-    cashFlowDomainModel.setDateTo(DateUtility.fromIsoDateString(cashFlowEntity.getDateTo()));
+    if (cashFlowEntity.getDateTo() != null) {
+      cashFlowDomainModel.setDateTo(DateUtility.fromIsoDateString(cashFlowEntity.getDateTo()));
+    }
 
     return cashFlowDomainModel;
   }
@@ -68,7 +70,9 @@ public class CashFlowPersistenceMapper {
     entity.setCurrency(cashFlowDomainModel.getCurrency());
     entity.setId(cashFlowDomainModel.getId());
     entity.setDateFrom(DateUtility.convertDateToIsoStringFormat(cashFlowDomainModel.getDateFrom()));
-    entity.setDateTo(DateUtility.convertDateToIsoStringFormat(cashFlowDomainModel.getDateTo()));
+    if (cashFlowDomainModel.getDateTo() != null) {
+      entity.setDateTo(DateUtility.convertDateToIsoStringFormat(cashFlowDomainModel.getDateTo()));
+    }
 
     CustomerEntity customerEntity = new CustomerEntity();
     customerEntity.setId(customerId);
