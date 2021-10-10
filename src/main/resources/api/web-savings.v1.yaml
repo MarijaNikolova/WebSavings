@@ -425,6 +425,10 @@ components:
           type: integer
           description: "The id of the asset"
           example: 1
+        description:
+          type: string
+          description: "The description of the asset"
+          example: "deposit 1"
         category:
           type: string
           enum:

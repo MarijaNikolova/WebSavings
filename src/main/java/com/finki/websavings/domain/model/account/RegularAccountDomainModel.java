@@ -25,7 +25,7 @@ public class RegularAccountDomainModel extends SavingAccountDomainModel {
 		for(int i = year; i < year + numberOfYears + 1; ++i) {
 			AnnualValue annualValue = AnnualValue.builder().value(getInitialValue()).currency(getCurrency()).build();
 
-			result.put(year, annualValue);
+			result.put(i, annualValue);
 		}
 
 		return result;

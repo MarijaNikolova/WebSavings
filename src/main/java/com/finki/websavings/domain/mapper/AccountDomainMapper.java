@@ -35,6 +35,7 @@ public class AccountDomainMapper {
 
     savingAccountDomainModel.setCurrency(account.getCurrency());
     savingAccountDomainModel.setInitialValue(account.getInitialValue().doubleValue());
+    if (account.getGrowthRate() != null)
     savingAccountDomainModel.setGrowthRate(account.getGrowthRate().doubleValue());
     savingAccountDomainModel.setDescription(account.getDescription());
 
@@ -97,11 +98,11 @@ public class AccountDomainMapper {
     if (domainModel instanceof DepositDomainModel) {
       account.setType(Account.TypeEnum.DEPOSIT);
     } else if (domainModel instanceof RegularAccountDomainModel){
-      account.setType(Account.TypeEnum.DEPOSIT);
+      account.setType(Account.TypeEnum.REGULAR_ACCOUNT);
     } else if (domainModel instanceof SecondPillarDomainModel) {
-      account.setType(Account.TypeEnum.DEPOSIT);
+      account.setType(Account.TypeEnum.SECOND_PILLAR);
     } else if (domainModel instanceof InvestmentAccountDomainModel) {
-      account.setType(Account.TypeEnum.DEPOSIT);
+      account.setType(Account.TypeEnum.INVESTMENT_ACCOUNT);
     }
 
     return account;

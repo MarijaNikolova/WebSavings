@@ -27,7 +27,7 @@ public class ExpenseCashFlowDomainModel extends CashFlowDomainModel {
           .expense(getValue())
           .currency(getCurrency()).build();
 
-      annualValueMap.put(year, value);
+      annualValueMap.put(i, value);
     }
 
     return annualValueMap;

@@ -46,7 +46,7 @@ public class ProjectionService {
    */
   public List<Projection> getProjections(Integer customerId) {
 
-    int numberOfYears = configDataRepository.findByCustomerId(customerId).getNumberOfYears();
+    int numberOfYears = configDataRepository.findByCustomerId(customerId) != null ? configDataRepository.findByCustomerId(customerId).getNumberOfYears() : 1;
 
     List<SavingAccountEntity> savingAccountEntities = savingAccountRepository.getAllByCustomerId(customerId);
 
@@ -83,6 +83,7 @@ public class ProjectionService {
     Projection projection = new Projection();
 
     projection.setId(savingAccountDomainModel.getId());
+    projection.setDescription(savingAccountDomainModel.getDescription());
     projection.setCategory(Projection.CategoryEnum.ACCOUNT);
 
     Map<Integer, AnnualValue> annualValueMap = savingAccountDomainModel.getAnnualValues(numberOfYears);
@@ -120,6 +121,7 @@ public class ProjectionService {
     Projection projection = new Projection();
 
     projection.setId(cashFlowDomainModel.getId());
+    projection.setDescription(cashFlowDomainModel.getDescription());
     projection.setCategory(Projection.CategoryEnum.CASHFLOW);
 
     Map<Integer, AnnualValue> annualValueMap = cashFlowDomainModel.getAnnualValues(numberOfYears);

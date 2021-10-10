@@ -24,7 +24,7 @@ public class DepositDomainModel extends SavingAccountDomainModel {
 
 			AnnualValue previousValue = result.get(i - 1);
 
-			double currentValue = previousValue.getValue() * getGrowthRate();
+			double currentValue = previousValue.getValue() * (1 + getGrowthRate());
 
 			AnnualValue annualValue = AnnualValue.builder().value(currentValue).currency(getCurrency()).build();
 

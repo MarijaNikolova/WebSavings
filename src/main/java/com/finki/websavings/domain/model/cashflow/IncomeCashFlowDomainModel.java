@@ -39,7 +39,7 @@ public class IncomeCashFlowDomainModel extends CashFlowDomainModel {
           .income(getValue())
           .currency(getCurrency()).build();
 
-      annualValueMap.put(year, value);
+      annualValueMap.put(i, value);
     }
 
     return annualValueMap;
