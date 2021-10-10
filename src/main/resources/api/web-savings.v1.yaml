@@ -128,6 +128,17 @@ paths:
       responses:
         200:
           description: "The content for the cash flows was saved, please retrieve it."
+    post:
+      tags:
+        - CashFlows
+      summary: >-
+        Deletes the cashFlow for the given customer
+      operationId: deleteCashFlow
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      responses:
+        200:
+          description: "The content for cash flow  was deleted"
   "/goals":
     get:
       tags:
@@ -164,6 +175,17 @@ paths:
       responses:
         200:
           description: "The content for goal  was saved, please retrieve it."
+    post:
+      tags:
+        - Goals
+      summary: >-
+        Deletes the goal for the given customer
+      operationId: deleteGoal
+      parameters:
+        - $ref: "#/components/parameters/AccountId"
+      responses:
+        200:
+          description: "The content for cash flow  was deleted"
   "/accounts":
       get:
         tags:
@@ -200,6 +222,17 @@ paths:
         responses:
           200:
             description: "The content for account  was saved, please retrieve it."
+      post:
+        tags:
+          - Accounts
+        summary: >-
+          Deletes the account for the given customer
+        operationId: deleteAccount
+        parameters:
+          - $ref: "#/components/parameters/AccountId"
+        responses:
+          200:
+            description: "The content for account  was deleted"
   "/projections":
     get:
       tags:
@@ -457,6 +490,14 @@ components:
       schema:
         type: integer
         x-data-class-category: d-non-sensitive-identifier
+    AccountId:
+      name: id
+      description: '`The account id.'
+      in: query
+      required: true
+      example: 1
+      schema:
+        type: integer
     CustomerEmail:
       name: customerEmail
       description: 'The customer email.'

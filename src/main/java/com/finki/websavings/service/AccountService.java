@@ -75,4 +75,12 @@ public class AccountService {
 
     return collect.stream().map(accountDomainMapper::toAccountDto).collect(Collectors.toList());
   }
+
+  /**
+   * Deletes the account for the given id.
+   * @param accountID the account id.
+   */
+  public void deleteAccount(Integer accountID) {
+    repository.deleteById(accountID);
+  }
 }

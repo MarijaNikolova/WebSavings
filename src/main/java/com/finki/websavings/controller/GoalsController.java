@@ -35,4 +35,10 @@ public class GoalsController implements GoalsApi {
 
     return ResponseEntity.of(Optional.of(goalsForCustomer));
   }
+
+  @Override
+  public ResponseEntity<Void> deleteGoal(Integer id) {
+    goalService.deleteGoal(id);
+    return null;
+  }
 }

@@ -32,4 +32,10 @@ public class AccountController implements AccountsApi {
     List<Account> accounts = accountService.getAllAccounts(customerId);
     return ResponseEntity.of(Optional.of(accounts));
   }
+
+  @Override
+  public ResponseEntity<Void> deleteAccount(Integer id) {
+    accountService.deleteAccount(id);
+    return null;
+  }
 }

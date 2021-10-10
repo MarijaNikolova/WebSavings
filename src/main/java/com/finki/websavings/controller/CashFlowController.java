@@ -33,4 +33,10 @@ public class CashFlowController implements CashFlowsApi {
     cashFlowService.saveCashFlow(body, customerId);
     return null;
   }
+
+  @Override
+  public ResponseEntity<Void> deleteCashFlow(Integer id) {
+    cashFlowService.deleteCashFlow(id);
+    return null;
+  }
 }

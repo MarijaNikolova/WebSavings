@@ -62,4 +62,14 @@ public class CashFlowService {
 
     return domainMapper.mapToDtos(domainModels);
   }
+
+  /**
+   * Deletes the cash flow for the given id.
+   *
+   * @param cashFlow the cashflow id.
+   */
+  public void deleteCashFlow(Integer cashFlow) {
+    incomeCashFlowRepository.deleteById(cashFlow);
+    expenseCashFlowRepository.deleteById(cashFlow);
+  }
 }

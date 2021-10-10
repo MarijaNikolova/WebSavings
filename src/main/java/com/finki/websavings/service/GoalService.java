@@ -66,4 +66,12 @@ public class GoalService {
 
     goalRepository.save(goalEntity);
   }
+
+  /**
+   * Deletes the goal for the given id.
+   * @param goalId the goal id.
+   */
+  public void deleteGoal(Integer goalId) {
+    goalRepository.deleteById(goalId);
+  }
 }
