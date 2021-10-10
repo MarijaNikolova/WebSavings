@@ -7,12 +7,15 @@ import com.finki.websavings.persistence.mapper.AccountPersistenceMapper;
 import com.finki.websavings.persistence.mapper.SavingInstitutionPersistenceMapper;
 import com.finki.websavings.persistence.model.account.SavingAccountEntity;
 import com.finki.websavings.persistence.model.account.SavingInstitutionEntity;
+import com.finki.websavings.persistence.model.customer.CustomerEntity;
 import com.finki.websavings.persistence.repository.account.SavingAccountRepository;
 import com.finki.websavings.persistence.repository.account.SavingInstitutionRepository;
+import com.finki.websavings.persistence.repository.customer.CustomerDataRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -27,6 +30,7 @@ public class AccountService {
   private final SavingAccountRepository repository;
   private final SavingInstitutionPersistenceMapper savingInstitutionPersistenceMapper;
   private final SavingInstitutionRepository savingInstitutionRepository;
+  private final CustomerDataRepository customerDataRepository;
 
   /**
    * Saves the account for the given customer.
@@ -44,6 +48,14 @@ public class AccountService {
 
     SavingAccountEntity savingAccountEntity =
       accountPersistenceMapper.toEntity(savingAccountDomainModel, customerId, savingInstitutionEntity);
+
+    Optional<CustomerEntity> customer = customerDataRepository.findById(customerId);
+    savingAccountEntity.setCustomer(customer.get());
+
+    if (account.getId() != null) {
+      Optional<SavingAccountEntity> byId = repository.findById(account.getId());
+      byId.ifPresent(accountEntity -> savingAccountEntity.setId(accountEntity.getId()));
+    }
 
     repository.save(savingAccountEntity);
   }

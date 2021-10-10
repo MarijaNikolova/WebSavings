@@ -40,6 +40,10 @@ public class CustomerDataPersistenceMapper {
    */
   public CustomerDomainModel mapToModel(CustomerEntity entity) {
 
+    if (entity == null) {
+      throw new IllegalArgumentException("Not correct data, please check again.");
+    }
+
     CustomerDomainModel customerData = new CustomerDomainModel();
     customerData.setEmail(entity.getEmail());
     customerData.setDateOfBirth(entity.getDateOfBirth());

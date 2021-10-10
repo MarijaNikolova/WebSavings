@@ -9,6 +9,10 @@ import com.finki.websavings.domain.model.account.SecondPillarDomainModel;
 import com.finki.websavings.model.Account;
 import com.finki.websavings.model.Bank;
 
+import com.finki.websavings.persistence.model.account.DepositEntity;
+import com.finki.websavings.persistence.model.account.InvestmentAccountEntity;
+import com.finki.websavings.persistence.model.account.RegularAccountEntity;
+import com.finki.websavings.persistence.model.account.SecondPillarEntity;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -88,6 +92,16 @@ public class AccountDomainMapper {
     if(domainModel instanceof InvestmentAccountDomainModel) {
       double riskFactor = ((InvestmentAccountDomainModel) domainModel).getRiskFactor();
       account.setRiskFactor(BigDecimal.valueOf(riskFactor));
+    }
+
+    if (domainModel instanceof DepositDomainModel) {
+      account.setType(Account.TypeEnum.DEPOSIT);
+    } else if (domainModel instanceof RegularAccountDomainModel){
+      account.setType(Account.TypeEnum.DEPOSIT);
+    } else if (domainModel instanceof SecondPillarDomainModel) {
+      account.setType(Account.TypeEnum.DEPOSIT);
+    } else if (domainModel instanceof InvestmentAccountDomainModel) {
+      account.setType(Account.TypeEnum.DEPOSIT);
     }
 
     return account;

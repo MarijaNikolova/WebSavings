@@ -4,12 +4,15 @@ import com.finki.websavings.domain.mapper.GoalDomainMapper;
 import com.finki.websavings.domain.model.goal.GoalDomainModel;
 import com.finki.websavings.model.Goal;
 import com.finki.websavings.persistence.mapper.GoalPersistenceMapper;
+import com.finki.websavings.persistence.model.customer.CustomerEntity;
 import com.finki.websavings.persistence.model.goal.GoalEntity;
+import com.finki.websavings.persistence.repository.customer.CustomerDataRepository;
 import com.finki.websavings.persistence.repository.goal.GoalRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -22,6 +25,7 @@ public class GoalService {
   private final GoalDomainMapper goalDomainMapper;
   private final GoalRepository goalRepository;
   private final GoalPersistenceMapper persistenceMapper;
+  private final CustomerDataRepository customerDataRepository;
 
   /**
    * Return all goals for the customer.
@@ -56,6 +60,10 @@ public class GoalService {
 
     GoalDomainModel goalDomainModel = goalDomainMapper.toDomainModel(goal);
     GoalEntity goalEntity = persistenceMapper.mapToEntity(goalDomainModel, customerId);
+
+    Optional<CustomerEntity> customer = customerDataRepository.findById(customerId);
+    goalEntity.setCustomer(customer.get());
+
     goalRepository.save(goalEntity);
   }
 }

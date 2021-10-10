@@ -30,6 +30,10 @@ public class ConfigDataService {
 
     ConfigDataEntity configData = configDataRepository.findByCustomerId(customerId);
 
+    if (configData == null) {
+      configData = new ConfigDataEntity();
+    }
+
     ConfigDataDomainModel configDataDomainModel = configDataPersistenceMapper.mapToModel(configData);
 
     return configDataDomainMapper.toDto(configDataDomainModel);
@@ -46,6 +50,12 @@ public class ConfigDataService {
     ConfigDataDomainModel configDataDomainModel = configDataDomainMapper.toDomainModel(configData);
 
     ConfigDataEntity configDataEntity = configDataPersistenceMapper.mapToEntity(configDataDomainModel, customerId);
+
+    ConfigDataEntity byCustomerId = configDataRepository.findByCustomerId(customerId);
+
+    if (byCustomerId != null) {
+      configDataEntity.setId(byCustomerId.getId());
+    }
 
     ConfigDataEntity savedObject = configDataRepository.save(configDataEntity);
 

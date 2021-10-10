@@ -46,6 +46,14 @@ public class CustomerDataService {
 
     CustomerEntity customerEntity = customerDataPersistenceMapper.mapToEntity(customerDomainModel);
 
+    CustomerEntity byEmail = customerDataRepository.findByEmail(customerData.getEmail());
+    if (byEmail != null) {
+      customerEntity.setId(byEmail.getId());
+      if (customerData.getPassword() == null) {
+        customerEntity.setPassword(byEmail.getPassword());
+      }
+    }
+
     customerDataRepository.save(customerEntity);
   }
 }

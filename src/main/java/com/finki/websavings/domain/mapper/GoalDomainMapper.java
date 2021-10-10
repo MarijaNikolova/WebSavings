@@ -32,6 +32,7 @@ public class GoalDomainMapper {
     goalDomainModel.setValue(goal.getValue().doubleValue());
     goalDomainModel.setPlannedForDate(DateUtility.convertDateToIsoStringFormat(goal.getPlannedFor()));
     goalDomainModel.setCurrency(goal.getCurrency());
+    goalDomainModel.setId(goal.getId());
 
     return goalDomainModel;
   }
@@ -66,6 +67,7 @@ public class GoalDomainMapper {
     goal.setPlannedFor(DateUtility.fromIsoDateString(goalDomainModel.getPlannedForDate()));
     goal.setCurrency(goalDomainModel.getCurrency());
     goal.setType(getType(goalDomainModel));
+    goal.setId(goalDomainModel.getId());
 
     return goal;
   }

@@ -68,10 +68,6 @@ public class GoalPersistenceMapper {
     goalEntity.setDescription(goalDomainModel.getDescription());
     goalEntity.setId(goalDomainModel.getId());
 
-    CustomerEntity customerEntity = new CustomerEntity();
-    customerEntity.setId(customerId);
-    goalEntity.setCustomer(customerEntity);
-
     return goalEntity;
   }
 

@@ -235,6 +235,7 @@ components:
           description: >-
             The language in which the client wants to see the application (MK or EN)
           example: 'EN'
+          default: 'EN'
         id:
           type: integer
           description: "The id of the config data"

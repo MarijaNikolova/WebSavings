@@ -18,4 +18,11 @@ public interface CustomerDataRepository extends JpaRepository<CustomerEntity, In
    * @return the customer entity
    */
   CustomerEntity findByEmailAndPassword(String email, String password);
+
+  /**
+   * Finds the customer for the given email.
+   * @param email the email.
+   * @return the customer.
+   */
+  CustomerEntity findByEmail(String email);
 }

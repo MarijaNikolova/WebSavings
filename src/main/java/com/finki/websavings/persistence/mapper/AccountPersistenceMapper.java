@@ -43,7 +43,7 @@ public class AccountPersistenceMapper {
     SavingInstitutionEntity bank = savingAccountEntity.getBank();
     savingInstitutionDomainModel.setName(bank.getName());
     savingInstitutionDomainModel.setType(bank.getType());
-    savingAccountDomainModel.setId(bank.getId());
+
     savingAccountDomainModel.setSavingInstitutionDomainModel(savingInstitutionDomainModel);
 
     if(savingAccountEntity instanceof InvestmentAccountEntity) {
@@ -91,10 +91,6 @@ public class AccountPersistenceMapper {
       double riskFactor = ((InvestmentAccountDomainModel) savingAccountDomainModel).getRiskFactor();
       ((InvestmentAccountEntity) savingAccountEntity).setRiskFactor(riskFactor);
     }
-
-    CustomerEntity customerEntity = new CustomerEntity();
-    customerEntity.setId(customerId);
-    savingAccountEntity.setCustomer(customerEntity);
 
     return savingAccountEntity;
   }

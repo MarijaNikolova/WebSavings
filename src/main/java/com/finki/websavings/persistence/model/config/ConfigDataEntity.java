@@ -33,10 +33,10 @@ public class ConfigDataEntity implements Serializable {
 	private Integer id;
 	
 	@Column(name="numberOfYears", nullable=true, length=10)
-	private Integer numberOfYears;
+	private Integer numberOfYears = 1;
 	
 	@Column(name="language", nullable=true, length=255)
-	private String language;
+	private String language = "EN";
 	
 	@OneToOne
 	@org.hibernate.annotations.Cascade({CascadeType.LOCK})
